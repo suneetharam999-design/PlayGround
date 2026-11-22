@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover, user-scalable=no">
+  <meta name="theme-color" content="#101619">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='32' fill='%23101619'/%3E%3Cpath d='M18 42 27 20h4l-9 22zm12 0 9-22h4l-9 22z' fill='%23a7f2ce'/%3E%3C/svg%3E">
+  <title>Vice City: After Hours</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main id="game">
+    <canvas id="world" aria-label="3D Vice City driving game"></canvas>
+    <div class="vignette"></div>
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Vice City After Hours">
+        <span class="brand-mark"><i></i><i></i><i></i></span>
+        <span><b>VICE CITY</b><small>AFTER HOURS</small></span>
+      </a>
+      <div class="session-pill"><span class="live-dot"></span><span>SESSION LIVE</span><i></i><b id="players">12</b><small>PLAYERS</small></div>
+      <div class="top-actions"><div class="clock"><small>LOCAL TIME</small><b id="clock">21:48</b></div><button id="soundBtn" class="icon-btn" aria-label="Toggle sound" title="Sound"><span class="sound-icon">♪</span></button><button id="pauseBtn" class="icon-btn pause-btn" aria-label="Pause game" title="Pause"><span>Ⅱ</span></button></div>
+    </header>
+    <section class="mission-card glass">
+      <div class="section-label"><span class="mission-icon">✳</span> ACTIVE JOB <span class="job-id">#VC-014</span></div>
+      <div class="job-title" id="jobTitle">The Drop</div>
+      <p id="jobDescription">Take the package to Ocean Drive. Keep it clean.</p>
+      <div class="destination"><span class="destination-pin">⌖</span><div><small>DESTINATION</small><b>OCEAN DRIVE · 8TH ST</b></div><span class="distance" id="distance">0.8 <small>MI</small></span></div>
+      <div class="job-progress"><i id="progressBar"></i></div>
+      <div class="job-foot"><span id="jobState">IN PROGRESS</span><span>REWARD <b id="reward">$2,400</b></span></div>
+    </section>
+    <section class="minimap glass" aria-label="City minimap">
+      <div class="map-heading"><span>VICE CITY</span><span class="map-time">NIGHT DRIVE <i></i></span></div>
+      <canvas id="mapCanvas" width="240" height="190"></canvas>
+      <div class="map-footer"><span><i class="map-player"></i> YOU</span><span><i class="map-dest"></i> DROP</span><span><i class="map-traffic"></i> TRAFFIC</span></div>
+    </section>
+    <section class="speed-card glass">
+      <div class="speed-value"><b id="speed">000</b><small>KM/H</small></div>
+      <div class="speed-meta"><span id="gear">D</span><i></i><span>SPORT</span></div>
+      <div class="speed-line"><i id="speedLine"></i></div>
+      <div class="vehicle-name"><span class="car-silhouette">▰</span><div><small>YOUR RIDE</small><b>VAPID DOMINATOR</b></div></div>
+    </section>
+    <div class="right-rail">
+      <button id="phoneToggle" class="phone-toggle glass" aria-label="Open phone"><span>▣</span><small>PHONE</small><i></i></button>
+      <div class="crew glass"><div class="crew-head"><span>IN YOUR AREA</span><span class="online-mini"><i></i> 3</span></div>
+        <div class="crew-row"><span class="avatar ava-coral">M</span><span><b>miasunset</b><small>Driving · 0.2 mi</small></span><i class="signal">●</i></div>
+        <div class="crew-row"><span class="avatar ava-teal">J</span><span><b>juno.wav</b><small>On foot · 0.4 mi</small></span><i class="signal">●</i></div>
+        <div class="crew-row"><span class="avatar ava-gold">R</span><span><b>Rico_305</b><small>Driving · 0.6 mi</small></span><i class="signal">●</i></div>
+        <div class="crew-divider"></div><button id="inviteBtn" class="invite-btn">＋ &nbsp;INVITE TO CREW</button>
+      </div>
+    </div>
+    <section class="phone" id="phone" aria-label="In-game phone" aria-hidden="true">
+      <div class="phone-frame"><div class="phone-notch"></div><div class="phone-status"><span>9:48</span><span>◉ ◌ ▰</span></div>
+        <div class="phone-screen" id="phoneScreen">
+          <div class="phone-home" id="phoneHome"><div class="phone-greeting"><small>WEDNESDAY, OCTOBER 23</small><b>Good evening,<br>Alex.</b><span>Vice City, Leonida <i>☀ 27°</i></span></div>
+            <div class="phone-apps"><button class="app-tile app-map" data-app="map"><span>⌖</span><small>MAP</small></button><button class="app-tile app-jobs" data-app="jobs"><span>▣</span><small>JOBS</small></button><button class="app-tile app-crew" data-app="crew"><span>♧</span><small>CREW</small></button><button class="app-tile app-camera" data-app="camera"><span>◉</span><small>SNAP</small></button></div>
+            <div class="phone-notification"><span class="notif-icon">✦</span><div><small>DISPATCH · NOW</small><b>New job available</b><span>The Drop · $2,400</span></div><span class="notif-arrow">›</span></div>
+            <div class="phone-dock"><span>☎</span><span>◉</span><span>▤</span><span>⚙</span></div>
+          </div>
+          <div class="phone-app-view" id="phoneAppView"><button id="backHome" class="back-home">‹ &nbsp;BACK</button><div id="appContent"></div></div>
+        </div><div class="phone-homebar"></div>
+      </div>
+    </section>
+    <div class="toast" id="toast"><span>✦</span><b id="toastText">Job accepted</b></div>
+    <div class="crosshair"><i></i></div>
+    <div class="control-hint" id="controlHint"><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> <span>DRIVE</span><kbd>SPACE</kbd> <span>HANDBRAKE</span></div>
+    <div class="touch-controls" id="touchControls">
+      <div class="steer-pad"><button data-control="left" aria-label="Steer left">◀</button><button data-control="right" aria-label="Steer right">▶</button></div>
+      <div class="pedal-pad"><button data-control="brake" class="brake-touch"><span>▼</span><small>BRAKE</small></button><button data-control="accelerate" class="accelerate-touch"><span>▲</span><small>DRIVE</small></button></div>
+    </div>
+    <div class="job-complete" id="jobComplete"><div class="complete-card glass"><span class="complete-icon">✦</span><small>JOB COMPLETE</small><h2>Clean work.</h2><p>The city remembers who gets it done.</p><div class="payout">+$2,400</div><button id="nextJob">GET BACK OUT THERE <span>↗</span></button></div></div>
+    <div class="paused-overlay" id="pausedOverlay"><div class="pause-panel glass"><span class="pause-symbol">Ⅱ</span><h2>Take a breath.</h2><p>Vice City isn't going anywhere.</p><button id="resumeBtn">RESUME DRIVE <span>↗</span></button><div class="pause-stats"><span>SESSION <b>LIVE</b></span><span>YOUR BALANCE <b id="pauseCash">$8,250</b></span></div></div></div>
+    <div class="toast" id="genericToast"><span>✦</span><b id="genericToastText">Sent crew invite</b></div>
+    <div class="mission-marker-label" id="markerLabel"><span>✦</span> THE DROP</div>
+  </main>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
